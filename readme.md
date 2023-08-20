@@ -53,7 +53,7 @@ Non-functional Requirements:
 •	The web app should prevent unauthorized access.
 
 ## Link
-https://mern-event-viewer-e3fe53c45a6b.herokuapp.com/
+https://mern-event-viewer-e3fe53c45a6b.herokuapp.com/  
 ADMIN INFO:
 username: admin
 password admin
