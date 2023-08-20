@@ -1,0 +1,284 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventsPage renders correctly 1`] = `
+[
+  <h1
+    style={
+      {
+        "fontFamily": "sans-serif",
+        "textDecoration": "underline",
+      }
+    }
+  >
+    EVENTS
+  </h1>,
+  <br />,
+  <div
+    id="top-menu"
+  >
+    <div
+      className="dropdown"
+      id="dropdown-menu"
+    >
+      <button
+        aria-expanded={false}
+        className="dropdown-toggle btn btn-success"
+        disabled={false}
+        id="dropdown-basic"
+        onClick={[Function]}
+        type="button"
+      >
+        Events
+      </button>
+    </div>
+    <div
+      style={
+        {
+          "display": "flex",
+        }
+      }
+    >
+      <form
+        className=""
+        inline="true"
+        onSubmit={[Function]}
+      >
+        <div>
+          <input
+            className="form-control"
+            id="searchEvent"
+            name="locationSearch"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </form>
+      <button
+        className="btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="submit"
+      >
+        Search Event
+      </button>
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      id="logout-btn"
+      type="button"
+    >
+      Log Out
+    </button>
+  </div>,
+  <div
+    className="create-edit-container"
+  />,
+]
+`;
+
+exports[`LogIn renders correctly 1`] = `
+<div
+  className="authentication-container"
+>
+  <form
+    className=""
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        className="form-label"
+        htmlFor="formLoginEmail"
+      >
+        Username
+      </label>
+      <input
+        className="form-control"
+        id="formLoginEmail"
+        name="username"
+        onChange={[Function]}
+        placeholder="Enter username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        className="form-label"
+        htmlFor="formLoginPassword"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        id="formLoginPassword"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="submit-details btn btn-primary"
+      disabled={false}
+      type="submit"
+    >
+      Login
+    </button>
+    <br />
+    <button
+      className="submit-details btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Register
+    </button>
+  </form>
+</div>
+`;
+
+exports[`MainComponent renders correctly 1`] = `
+<div>
+  <div
+    className="authentication-container"
+  >
+    <form
+      className=""
+      onSubmit={[Function]}
+    >
+      <div>
+        <label
+          className="form-label"
+          htmlFor="formLoginEmail"
+        >
+          Username
+        </label>
+        <input
+          className="form-control"
+          id="formLoginEmail"
+          name="username"
+          onChange={[Function]}
+          placeholder="Enter username"
+          type="text"
+          value=""
+        />
+      </div>
+      <div>
+        <label
+          className="form-label"
+          htmlFor="formLoginPassword"
+        >
+          Password
+        </label>
+        <input
+          className="form-control"
+          id="formLoginPassword"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        className="submit-details btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        Login
+      </button>
+      <br />
+      <button
+        className="submit-details btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="submit"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`UserEventsPage renders correctly 1`] = `
+[
+  <h1
+    style={
+      {
+        "fontFamily": "sans-serif",
+        "textDecoration": "underline",
+      }
+    }
+  >
+    EVENTS
+  </h1>,
+  <br />,
+  <div
+    id="top-menu"
+  >
+    <div
+      className="dropdown"
+      id="dropdown-menu"
+    >
+      <button
+        aria-expanded={false}
+        className="dropdown-toggle btn btn-success"
+        disabled={false}
+        id="dropdown-basic"
+        onClick={[Function]}
+        type="button"
+      >
+        Events
+      </button>
+    </div>
+    <div
+      style={
+        {
+          "display": "flex",
+        }
+      }
+    >
+      <form
+        className=""
+        inline="true"
+      >
+        <div
+          onSubmit={[Function]}
+        >
+          <input
+            className="form-control"
+            id="searchEvent"
+            name="locationSearch"
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </div>
+      </form>
+      <button
+        className="btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="submit"
+      >
+        Search Event
+      </button>
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      id="logout-btn"
+      type="button"
+    >
+      Log Out
+    </button>
+  </div>,
+  <div
+    className="container"
+  />,
+]
+`;

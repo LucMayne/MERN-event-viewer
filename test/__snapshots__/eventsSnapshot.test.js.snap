@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test the /event-homepage route respond with an error if no token is attached to the request 1`] = `
+{
+  "message": "No token attached to the request",
+}
+`;

@@ -1,0 +1,14 @@
+#top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#logout-btn {
+    margin-right: 10vw;
+}
+
+#dropdown-menu {
+    margin-left: 10vw;
+}
