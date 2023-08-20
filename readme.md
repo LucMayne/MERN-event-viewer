@@ -1,9 +1,11 @@
 ## Event App
+This is a MERN application that allows users to view upcomming events. Users can sort the events by date or price, or they can search by location.
+An admin user can login and create a new event, delete an existing event, or edit an event. They also have all the options of a normal user.
 
 # SYSTEM ARCHITECTURE:
 
 For this app, I will be using Create React App (CRA) because it gives me more control over the development process. 
-For styling, I will use a combination of react-bootstrap and custom CSS. The app will be deployed to Heroku
+For styling, I will use a combination of react-bootstrap and custom CSS. The app will be deployed to Heroku from Github.
 
 # SYSTEM REQUIREMENTS SPECIFICATION:
 
