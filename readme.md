@@ -66,10 +66,7 @@ password admin
 
 ## Running the app
 
-1. Open two terminal windows, one for the backend and one for the frontend.
-2. In the first terminal, navigate to the `backend` directory and run the command `npm start` to start the backend server.
-3. In the second terminal, navigate to the `frontend` directory and run the command `npm start` to start the frontend server.
-4. Open a browser and go to `http://localhost:3000` to view the app.
+After installing the dependencies, type `npm start` in the root folder, which will start the express server and open the react app in a window.
 
 ## Helmet
 
