@@ -25,7 +25,7 @@ class LogIn extends React.Component {
                     'Content-Type': 'application/json',
                 },
                 // send the email and password in the body
-                body: JSON.stringify({ username: this.state.email, password: this.state.password }),
+                body: JSON.stringify({ email: this.state.email, password: this.state.password }),
             });
             // if the response is not ok, throw an error
             if (!response.ok) {
