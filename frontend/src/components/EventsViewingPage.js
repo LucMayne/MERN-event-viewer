@@ -58,7 +58,7 @@ class UserEventsPage extends EventsPage {
                     {/* search bar to search by location */}
                     <div style={{display: 'flex'}}>
                         <Form inline="true">
-                            <Form.Group controlId="searchEvent" onSubmit={this.searchByLocation}>
+                            <Form.Group controlId="searchEvent">
                                 <Form.Control type="text" name="locationSearch" value={this.state.locationSearch} onChange={this.updateSearch} />
                             </Form.Group>
                         </Form>

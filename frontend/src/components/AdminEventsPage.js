@@ -323,7 +323,7 @@ class EventsPage extends React.Component {
                     </Dropdown>
                     <div style={{display: 'flex'}}>
                         {/* search bar to search by location */}
-                        <Form inline="true" onSubmit={this.searchByLocation}>
+                        <Form inline="true">
                             <Form.Group controlId="searchEvent">
                                 <Form.Control type="text" name="locationSearch" value={this.state.locationSearch} onChange={this.updateEventState} />
                             </Form.Group>
