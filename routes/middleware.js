@@ -18,11 +18,10 @@ function checkJWTToken(req, res, next) {
     }
 }
 
-
 // Respond with an HTTP 403 to all requests by users whose usernames don’t end with the substring ‘@gmail.com’.
 const checkUsername = (req, res, next) => {
     if (!req.body.username.endsWith('@gmail.com')) {
-        res.status(403).send({ message: 'Invalid username' });
+        res.status(403).json({ message: 'Invalid Username, must end with @gmail.com' });
     } else {
         next();
     }

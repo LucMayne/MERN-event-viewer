@@ -1,10 +1,13 @@
 import React from 'react';
 import { Form, Button, Dropdown } from 'react-bootstrap';
-import './EventsPage.css';
+import './AdminEventsPage.css';
 
+// this class component renders all the events and allows the admin to create, edit and delete events
+// crud operations GET, POST, PUT, DELETE, are used to interact with the database
 class EventsPage extends React.Component {
     constructor(props) {
         super(props);
+        // state for events and storing user input for editing or adding events
         this.state = {
             events: [],
             eventName: '',
@@ -15,6 +18,13 @@ class EventsPage extends React.Component {
             eventPresenter: '',
             eventEntryFee: '',
             eventID: '',
+            newEventName: '',
+            newEventDate: '',
+            newEventTime: '',
+            newEventLocation: '',
+            newEventDescription: '',
+            newEventPresenter: '',
+            newEventEntryFee: '',
             locationSearch: '',
             selectedOption: 'Events',
             initialLoad: false,
@@ -31,15 +41,15 @@ class EventsPage extends React.Component {
         this.editEvent = this.editEvent.bind(this);
         this.deleteEvent = this.deleteEvent.bind(this);
         this.updateEventState = this.updateEventState.bind(this);
-        this.handleEventsClick = this.handleEventsClick.bind(this);
+        this.handleAllEventsClick = this.handleAllEventsClick.bind(this);
     }
 
+    // fetch all events when the component mounts
     componentDidMount() {
         if (!this.state.initialLoad) {
             this.fetchAllEvents();
         }
-    }
-    
+    }    
     
     // set editEvent to the opposite of its current value
     editEventForm = (eventId) => {
@@ -137,6 +147,10 @@ class EventsPage extends React.Component {
     searchByLocation(event) {
         event.preventDefault();
         const searchTerm = this.state.locationSearch;
+        if (searchTerm === '') {
+            alert('Please enter a location');
+            return;
+        }
         // pass the search term to the backend
         fetch(`/events/events-by-location?searchTerm=${searchTerm}`, {
             method: 'GET',
@@ -166,12 +180,11 @@ class EventsPage extends React.Component {
             console.error(error);
         });
     }
-    
 
     // create a new event
     createEvent = (event) => {
         event.preventDefault();
-        if (this.state.eventName === '' || this.state.eventDate === '' || this.state.eventTime === '' || this.state.eventLocation === '' || this.state.eventDescription === '' || this.state.eventPresenter === '' || this.state.eventEntryFee === '') {
+        if (this.state.newEventName === '' || this.state.newEventDate === '' || this.state.newEventTime === '' || this.state.newEventLocation === '' || this.state.newEventDescription === '' || this.state.newEventPresenter === '' || this.state.newEventEntryFee === '') {
             alert('Please fill out all fields');
             return;
         }
@@ -181,7 +194,7 @@ class EventsPage extends React.Component {
                 'Content-Type': 'application/json',
             },
             // pass the values from the state to the backend
-            body: JSON.stringify({ eventName: this.state.eventName, eventDate: this.state.eventDate, eventTime: this.state.eventTime, eventLocation: this.state.eventLocation, eventDescription: this.state.eventDescription, eventPresenter: this.state.eventPresenter, eventEntryFee: this.state.eventEntryFee }),
+            body: JSON.stringify({ eventName: this.state.newEventName, eventDate: this.state.newEventDate, eventTime: this.state.newEventTime, eventLocation: this.state.newEventLocation, eventDescription: this.state.newEventDescription, eventPresenter: this.state.newEventPresenter, eventEntryFee: this.state.newEventEntryFee }),
         })
         .then(response => {
             if (!response.ok) {
@@ -192,13 +205,13 @@ class EventsPage extends React.Component {
         .then(data => {
             // set the state for the new event to default values
             this.setState({ 
-                eventName: '', 
-                eventDate: '', 
-                eventTime: '', 
-                eventLocation: '', 
-                eventDescription: '', 
-                eventPresenter: '', 
-                eventEntryFee: '' 
+                newEventName: '', 
+                newEventDate: '', 
+                newEventTime: '', 
+                newEventLocation: '', 
+                newEventDescription: '', 
+                newEventPresenter: '', 
+                newEventEntryFee: '' 
             });
             this.fetchAllEvents();
         })
@@ -284,7 +297,7 @@ class EventsPage extends React.Component {
     };
 
     // handle the events option
-    handleEventsClick = (event) => {
+    handleAllEventsClick = (event) => {
         event.preventDefault();
         this.setState({ selectedOption: 'Events' });
         this.fetchAllEvents();
@@ -293,7 +306,7 @@ class EventsPage extends React.Component {
     render() {
         return (
             <>
-                <h1 style={{fontFamily: "sans-serif", textDecoration: "underline"}}>EVENTS</h1> 
+                <h1 className='heading-styles'>EVENTS</h1> 
                 <br />
                 {/* dropdown menu with options to sort events */}
                 <div id="top-menu">
@@ -303,7 +316,7 @@ class EventsPage extends React.Component {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={this.handleEventsClick}>Events</Dropdown.Item>
+                            <Dropdown.Item onClick={this.handleAllEventsClick}>Events</Dropdown.Item>
                             <Dropdown.Item onClick={this.handleSortByDateClick}>Sort by Date</Dropdown.Item>
                             <Dropdown.Item onClick={this.handleSortByEntryFeeClick}>Sort by Entry Fee</Dropdown.Item>
                         </Dropdown.Menu>
@@ -352,19 +365,19 @@ class EventsPage extends React.Component {
                                 <h2>Create Event</h2>
                                 <Form.Group controlId="newEvent">
                                     <Form.Label>Event Name</Form.Label>
-                                    <Form.Control type="text" name="eventName" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventName" value={this.state.newEventName} onChange={this.updateEventState} />
                                     <Form.Label>Event Date</Form.Label>
-                                    <Form.Control type="text" name="eventDate" placeholder="dd/mm/yyyy" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventDate" value={this.state.newEventDate} placeholder="dd/mm/yyyy" onChange={this.updateEventState} />
                                     <Form.Label>Event Time</Form.Label>
-                                    <Form.Control type="text" name="eventTime" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventTime" value={this.state.newEventTime} onChange={this.updateEventState} />
                                     <Form.Label>Event Location</Form.Label>
-                                    <Form.Control type="text" name="eventLocation" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventLocation" value={this.state.newEventLocation} onChange={this.updateEventState} />
                                     <Form.Label>Event Description</Form.Label>
-                                    <Form.Control type="text" name="eventDescription" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventDescription" value={this.state.newEventDescription} onChange={this.updateEventState} />
                                     <Form.Label>Event Presenter</Form.Label>
-                                    <Form.Control type="text" name="eventPresenter" onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventPresenter" value={this.state.newEventPresenter} onChange={this.updateEventState} />
                                     <Form.Label>Event Entry Fee</Form.Label>
-                                    <Form.Control type="text" name="eventEntryFee" placeholder='R0' onChange={this.updateEventState} />
+                                    <Form.Control type="text" name="newEventEntryFee" value={this.state.newEventEntryFee} placeholder='R0' onChange={this.updateEventState} />
                                     <Button variant="primary" type="submit">
                                         Create Event
                                     </Button>

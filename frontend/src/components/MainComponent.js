@@ -1,7 +1,7 @@
 import React from 'react';
 import LogIn  from './LogInComponent.js';
-import EventsPage from './EventsPage.js';
-import UserEventsPage from './UserEventsPage.js';
+import EventsPage from './AdminEventsPage.js';
+import UserEventsPage from './EventsViewingPage.js';
 
 // this is the main component that calls the other components depending on the state of the user
 class MainComponent extends React.Component {

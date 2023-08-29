@@ -1,3 +1,22 @@
+.heading-styles {
+    font-family: '';
+    font-size: 40px;
+    color: #333;
+    text-align: center;
+    font-weight: 900;
+    background: linear-gradient(to right, blue, lightblue);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5vh;
+}
+
+.main-form-container {
+    margin-top: 4vh;
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+}
+
 .authentication-container {
     text-align: center;
     width: 300px;

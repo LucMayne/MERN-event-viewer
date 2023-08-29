@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import UserEventsPage from "../components/UserEventsPage";
+import UserEventsPage from "../components/EventsViewingPage";
 
 test("UserEventsPage renders without crashing", () => {
     // create a div container for UserEventsPage

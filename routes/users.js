@@ -36,12 +36,20 @@ router.post('/login', async (req, res) => {
 // register route
 router.post('/register', checkUsername, async (req, res) => {
   // create a new user
-  let newUser = createUser(req.body.username, req.body.password);
-  if (newUser) {
-    res.json({ message: 'Account Created' });
-  } else {
+  try {
+    if (req.body.password.length < 4) {
+      res.json({ message: 'Password must be at least 4 characters' });
+    } else {
+      let newUser = createUser(req.body.username, req.body.password);
+      if (newUser) {
+        res.json({ message: 'Account Created' });
+      } else {
+        res.status(401).send({ message: 'User not created' });
+      } 
+    }
+  } catch (error) {
     res.status(401).send({ message: 'User not created' });
-  } 
+  }
 });
 
 module.exports = router;

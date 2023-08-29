@@ -3,12 +3,7 @@
 exports[`EventsPage renders correctly 1`] = `
 [
   <h1
-    style={
-      {
-        "fontFamily": "sans-serif",
-        "textDecoration": "underline",
-      }
-    }
+    className="heading-styles"
   >
     EVENTS
   </h1>,
@@ -82,104 +77,41 @@ exports[`LogIn renders correctly 1`] = `
 <div
   className="authentication-container"
 >
-  <form
-    className=""
-    onSubmit={[Function]}
+  <h1
+    className="heading-styles"
   >
-    <div>
-      <label
-        className="form-label"
-        htmlFor="formLoginEmail"
-      >
-        Username
-      </label>
-      <input
-        className="form-control"
-        id="formLoginEmail"
-        name="username"
-        onChange={[Function]}
-        placeholder="Enter username"
-        type="text"
-        value=""
-      />
-    </div>
-    <div>
-      <label
-        className="form-label"
-        htmlFor="formLoginPassword"
-      >
-        Password
-      </label>
-      <input
-        className="form-control"
-        id="formLoginPassword"
-        name="password"
-        onChange={[Function]}
-        placeholder="Password"
-        type="text"
-        value=""
-      />
-    </div>
-    <button
-      className="submit-details btn btn-primary"
-      disabled={false}
-      type="submit"
-    >
-      Login
-    </button>
-    <br />
-    <button
-      className="submit-details btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      type="submit"
-    >
-      Register
-    </button>
-  </form>
-</div>
-`;
-
-exports[`MainComponent renders correctly 1`] = `
-<div>
+    Find Upcoming Events
+  </h1>
   <div
-    className="authentication-container"
+    className="main-form-container"
   >
+    <p>
+      Login to an Account
+    </p>
     <form
       className=""
       onSubmit={[Function]}
     >
       <div>
-        <label
-          className="form-label"
-          htmlFor="formLoginEmail"
-        >
-          Username
-        </label>
         <input
           className="form-control"
           id="formLoginEmail"
-          name="username"
+          name="email"
           onChange={[Function]}
-          placeholder="Enter username"
+          placeholder="Email"
           type="text"
           value=""
         />
       </div>
+      <br />
       <div>
-        <label
-          className="form-label"
-          htmlFor="formLoginPassword"
-        >
-          Password
-        </label>
         <input
           className="form-control"
           id="formLoginPassword"
           name="password"
           onChange={[Function]}
           placeholder="Password"
-          type="text"
+          type="password"
           value=""
         />
       </div>
@@ -190,9 +122,17 @@ exports[`MainComponent renders correctly 1`] = `
       >
         Login
       </button>
-      <br />
+      <p
+        style={
+          {
+            "textDecoration": "underline",
+          }
+        }
+      >
+        or
+      </p>
       <button
-        className="submit-details btn btn-primary"
+        className="btn btn-primary"
         disabled={false}
         onClick={[Function]}
         type="submit"
@@ -204,15 +144,83 @@ exports[`MainComponent renders correctly 1`] = `
 </div>
 `;
 
+exports[`MainComponent renders correctly 1`] = `
+<div>
+  <div
+    className="authentication-container"
+  >
+    <h1
+      className="heading-styles"
+    >
+      Find Upcoming Events
+    </h1>
+    <div
+      className="main-form-container"
+    >
+      <p>
+        Login to an Account
+      </p>
+      <form
+        className=""
+        onSubmit={[Function]}
+      >
+        <div>
+          <input
+            className="form-control"
+            id="formLoginEmail"
+            name="email"
+            onChange={[Function]}
+            placeholder="Email"
+            type="text"
+            value=""
+          />
+        </div>
+        <br />
+        <div>
+          <input
+            className="form-control"
+            id="formLoginPassword"
+            name="password"
+            onChange={[Function]}
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          className="submit-details btn btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          Login
+        </button>
+        <p
+          style={
+            {
+              "textDecoration": "underline",
+            }
+          }
+        >
+          or
+        </p>
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="submit"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`UserEventsPage renders correctly 1`] = `
 [
   <h1
-    style={
-      {
-        "fontFamily": "sans-serif",
-        "textDecoration": "underline",
-      }
-    }
+    className="heading-styles"
   >
     EVENTS
   </h1>,

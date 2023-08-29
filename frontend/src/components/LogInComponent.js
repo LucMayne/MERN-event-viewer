@@ -7,9 +7,9 @@ class LogIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            email: '',
             password: '',
-            newUsername: '',
+            newEmail: '',
             newPassword: '',
             registerAccount: false,
         };
@@ -24,8 +24,8 @@ class LogIn extends React.Component {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                // send the username and password in the body
-                body: JSON.stringify({ username: this.state.username, password: this.state.password }),
+                // send the email and password in the body
+                body: JSON.stringify({ username: this.state.email, password: this.state.password }),
             });
             // if the response is not ok, throw an error
             if (!response.ok) {
@@ -37,42 +37,55 @@ class LogIn extends React.Component {
                 this.props.handleLogIn(data.token, data.admin);
             }
         } catch (error) {
-            alert("Incorrect Username or Password.");
+            alert("Incorrect Email or Password.");
         }
     }
         
     // update state when registration fails
     handleRegisterFail = () => {
-        this.setState({ newUsername: '', newPassword: '' });
+        this.setState({ newEmail: '', newPassword: '' });
     }  
 
     // register a new user
     Register = (event) => {
         event.preventDefault();
+        if (!this.state.newEmail && !this.state.newPassword) {
+            alert('Please enter an email and password');
+            this.setState({ newEmail: '', newPassword: '' });
+            return;
+        }
+        if (!this.state.newEmail) {
+            alert('Please enter an email');
+            this.setState({ newEmail: '', newPassword: '' });
+            return;
+        }
+        if (!this.state.newPassword) {
+            alert('Please enter a password');
+            this.setState({ newEmail: '', newPassword: '' });
+            return;
+        }
         fetch('/users/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username: this.state.newUsername, password: this.state.newPassword }),
+            body: JSON.stringify({ username: this.state.newEmail, password: this.state.newPassword }),
         })
-        .then(response => {
-            if (!response.ok) {
-                // if the response is not ok, throw an error
-                this.handleRegisterFail();
-                throw new Error('Invalid credentials');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            this.setState({ newUsername: '', newPassword: '' });
-            alert(data.message);
+            if (data.message) {
+                alert(data.message);
+                this.setState({ newEmail: '', newPassword: '' });
+            } else {
+                this.setState({ newEmail: '', newPassword: '' });
+                alert('Account Created');
+            }
         })
         .catch(error => {
-            console.error(error);
-            alert('Invalid email or password');
+            alert('Account not created');
+            this.setState({ newEmail: '', newPassword: '' });
         });
-    }
+    }   
 
     // switch between login and register forms
     handleRegisterClick = (event) => {
@@ -90,48 +103,51 @@ class LogIn extends React.Component {
     render() {
         return (
             <div className="authentication-container">
+                <h1 className='heading-styles'>Find Upcoming Events</h1> 
                 {/* form for logging in */}
                 {!this.state.registerAccount &&
-                    <Form onSubmit={this.LogIn}>
-                        <Form.Group controlId="formLoginEmail">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" name="username" value={this.state.username} placeholder="Enter username" onChange={this.onChange} />
-                        </Form.Group>
-
-                        <Form.Group controlId="formLoginPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="text" name="password" value={this.state.password} placeholder="Password" onChange={this.onChange} />
-                        </Form.Group>
-                        <Button className='submit-details' variant="primary" type="submit">
-                            Login
-                        </Button>
-                        <br />
-                        <Button className='submit-details' variant="primary" type="submit" onClick={this.handleRegisterClick}>
-                            Register
-                        </Button>
-                    </Form>
+                    <div className='main-form-container'>
+                        <p>Login to an Account</p>
+                        <Form onSubmit={this.LogIn}>
+                            <Form.Group controlId="formLoginEmail">
+                                <Form.Control type="text" name="email" value={this.state.email} placeholder="Email" onChange={this.onChange} />
+                            </Form.Group>
+                            <br />
+                            <Form.Group controlId="formLoginPassword">
+                                <Form.Control type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.onChange} />
+                            </Form.Group>
+                            <Button className='submit-details' variant="primary" type="submit">
+                                Login
+                            </Button>
+                            <p style={{textDecoration: 'underline'}}>or</p>
+                            <Button variant="primary" type="submit" onClick={this.handleRegisterClick}>
+                                Register
+                            </Button>
+                        </Form>
+                    </div>
                 }
 
                 {/* form for registering */}
                 {this.state.registerAccount &&
-                    <Form onSubmit={this.Register}>
-                        <Form.Group controlId="formRegisterEmail">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" name="newUsername" value={this.state.newUsername} placeholder="Enter username" onChange={this.onChange} />
-                        </Form.Group>
-
-                        <Form.Group controlId="formRegisterPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="text" name="newPassword" value={this.state.newPassword} placeholder="Password" onChange={this.onChange} />
-                        </Form.Group>
-                        <Button className='submit-details' variant="primary" type="submit">
-                            Register
-                        </Button>
-                        <br />
-                        <Button className='submit-details' variant="primary" type="submit" onClick={this.handleRegisterClick}>
-                            Login
-                        </Button>
-                    </Form>
+                    <div className='main-form-container'>
+                        <p>Register an Account</p>
+                        <Form onSubmit={this.Register}>
+                            <Form.Group controlId="formRegisterEmail">
+                                <Form.Control type="text" name="newEmail" value={this.state.newEmail} placeholder="Enter Your Gmail" onChange={this.onChange} />
+                            </Form.Group>
+                            <br />
+                            <Form.Group controlId="formRegisterPassword">
+                                <Form.Control type="password" name="newPassword" value={this.state.newPassword} placeholder="Password" onChange={this.onChange} />
+                            </Form.Group>
+                            <Button className='submit-details' variant="primary" type="submit">
+                                Register
+                            </Button>
+                            <p style={{textDecoration: 'underline'}}>or</p>
+                            <Button variant="primary" type="submit" onClick={this.handleRegisterClick}>
+                                Login
+                            </Button>
+                        </Form>
+                    </div>
                 }
             </div>
         );

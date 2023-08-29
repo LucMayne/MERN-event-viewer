@@ -1,5 +1,5 @@
 ## Event App
-This is a MERN application that allows users to view upcomming events. Users can sort the events by date or price, or they can search by location.
+This is a MERN application that allows users to view upcoming events. Users can sort the events by date or price, or they can search by location.
 An admin user can login and create a new event, delete an existing event, or edit an event. They also have all the options of a normal user.
 
 # SYSTEM ARCHITECTURE:
@@ -9,11 +9,11 @@ For styling, I will use a combination of react-bootstrap and custom CSS. The app
 
 # SYSTEM REQUIREMENTS SPECIFICATION:
 
-## Functional Requiremnets:
+## Functional Requirements:
 1. Sign In:
    Users should be able to sign in with an email and password.
    If the users credentials are valid they should be redirected to the main page.
-   If the userrs credentials are invalid and error message should be displayed.
+   If the users credentials are invalid and error message should be displayed.
 2. Register Account:
    Users should be able to register an account with an email and password.
    If the users email does not end with '@gmail.com' or they don't enter a password an error message should be displayed.
@@ -23,7 +23,7 @@ For styling, I will use a combination of react-bootstrap and custom CSS. The app
    The Sign In page should be displayed once they have signed out.
 4. Filter Events:
    Users should be able to sort by 'all events', 'by date', 'by entry fee'.
-5. Seach Location:k
+5. Search Location:k
    The user should be able to search for events by entering the location in an input field.
    Events that match that location should be displayed.
    If there are no events that match that location a message should be displayed telling the user that no events were found.

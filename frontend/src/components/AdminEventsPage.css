@@ -1,3 +1,13 @@
+.heading-styles {
+    font-size: 50px;
+    color: #333;
+    text-align: center;
+    font-weight: 700;
+    background: linear-gradient(to right, blue, rgb(137, 203, 224));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
+
 #top-menu {
     display: flex;
     justify-content: space-between;

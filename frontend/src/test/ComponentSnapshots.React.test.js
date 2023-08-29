@@ -2,8 +2,8 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import MainComponent from '../components/MainComponent';
 import LogIn from "../components/LoginComponent";
-import EventsPage from "../components/EventsPage";
-import UserEventsPage from "../components/UserEventsPage";
+import EventsPage from "../components/AdminEventsPage";
+import UserEventsPage from "../components/EventsViewingPage";
 
 // create a mock fetch to prevent errors
 global.fetch = jest.fn(() =>

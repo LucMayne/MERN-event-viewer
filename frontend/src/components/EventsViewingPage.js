@@ -1,10 +1,11 @@
 
 import React from 'react';
 import { Form, Button, Dropdown } from 'react-bootstrap';
-import EventsPage from './EventsPage.js';
-import './UserEventsPage.css';
+import EventsPage from './AdminEventsPage.js';
+import './EventsViewingPage.css';
 
-// extend the EventsPage class
+// extend the EventsPage class and uses most of the same methods, but doesn't allow users to add, delete or edit events.
+// GET is used to fetch all events or specific events from the database
 class UserEventsPage extends EventsPage {
     constructor(props) {
         super(props);
@@ -15,7 +16,7 @@ class UserEventsPage extends EventsPage {
             initialLoad: false,
         };
 
-        this.handleEventsClick = this.handleEventsClick.bind(this);
+        this.handleAllEventsClick = this.handleAllEventsClick.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
     }
 
@@ -30,7 +31,7 @@ class UserEventsPage extends EventsPage {
     };
 
     // handle the events option
-    handleEventsClick = (event) => {
+    handleAllEventsClick = (event) => {
         event.preventDefault();
         this.setState({ selectedOption: 'Events' });
         this.fetchAllEvents();
@@ -39,7 +40,7 @@ class UserEventsPage extends EventsPage {
     render() {
         return (
           <>
-            <h1 style={{fontFamily: "sans-serif", textDecoration: "underline"}}>EVENTS</h1> 
+            <h1 className='heading-styles'>EVENTS</h1> 
                 <br />
                 <div id="top-menu">
                     <Dropdown id='dropdown-menu'>
@@ -49,7 +50,7 @@ class UserEventsPage extends EventsPage {
 
                         {/* dropdown menu with options */}
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={this.handleEventsClick}>Events</Dropdown.Item>
+                            <Dropdown.Item onClick={this.handleAllEventsClick}>Events</Dropdown.Item>
                             <Dropdown.Item onClick={this.handleSortByDateClick}>Sort by Date</Dropdown.Item>
                             <Dropdown.Item onClick={this.handleSortByEntryFeeClick}>Sort by Entry Fee</Dropdown.Item>
                         </Dropdown.Menu>

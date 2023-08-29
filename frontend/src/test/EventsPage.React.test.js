@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import EventsPage from "../components/EventsPage";
+import EventsPage from "../components/AdminEventsPage";
 
 test("EventsPage renders without crashing", () => {
     // create a div container for EventsPage
