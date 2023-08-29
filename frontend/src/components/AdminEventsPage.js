@@ -388,9 +388,9 @@ class EventsPage extends React.Component {
                     {this.state.editingEvent && (
                         // form to edit an existing event
                         <div className='form-container'>
-                            <Form >
+                            <Form onSubmit={this.editEvent}>
                                 <h2>Edit Event</h2>
-                                <Form.Group controlId="newEvent" onSubmit={this.editEvent}>
+                                <Form.Group controlId="newEvent">
                                     <Form.Label>Event Name</Form.Label>
                                     <Form.Control type="text" name="eventName" value={this.state.eventName} onChange={this.updateEventState} />
                                     <Form.Label>Event Date</Form.Label>
