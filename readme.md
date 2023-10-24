@@ -53,9 +53,7 @@ Non-functional Requirements:
 •	It should be able to handle a large amount of events without slowing down.
 4.	Security: 
 •	The web app should prevent unauthorized access.
-
-## Link
-https://mern-event-viewer-e3fe53c45a6b.herokuapp.com/  
+  
 ADMIN INFO:
 username: admin
 password admin
